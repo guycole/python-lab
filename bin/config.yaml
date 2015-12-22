@@ -1,0 +1,9 @@
+#
+#dumpCommand: /usr/local/mysql/bin/mysqldump
+dumpCommand: /usr/bin/mysqldump
+#
+mySqlUserName: bogus
+mySqlPassWord: bogus
+mySqlDataBase: bogus
+mySqlHostName: localhost
+#
