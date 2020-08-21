@@ -27,6 +27,11 @@ def load_names(infile_name):
     return names
 
 def fix_file(candidate, raw_data_directory, temp_directory):
+    #
+    # read the files in raw_data_directory and format/convert them w/results in temp_directory
+    # return row count, empty files will not be zipped
+    #
+
     name_id = candidate[0]
     market = candidate[2].lower()
 
@@ -62,7 +67,7 @@ def fix_file(candidate, raw_data_directory, temp_directory):
         row_tuple = (tokens[3].strip(), tokens[4].strip(), int(tokens[5].strip()), int(tokens[6].strip()), int(tokens[7].strip()), int(tokens[8].strip()), int(tokens[9].strip()), int(tokens[10].strip()))
         output_datum.append(row_tuple)
 
-    print("creating:%d:%s" % (len(output_datum), full_file_name))
+    print "creating:%d:%s" % (len(output_datum), full_file_name)
 
     with open(full_file_name, "w") as outfile:
         outfile.write("name_id | date | open_price | high_price | low_price | close_price | volume | open_interest |\n")
@@ -72,6 +77,8 @@ def fix_file(candidate, raw_data_directory, temp_directory):
             outfile.write(output_formatted)
 
 def shell_call(command):
+    print command
+
     for attempt in range(128):
         print "attempt:%d" % attempt
 
@@ -132,15 +139,19 @@ print 'start'
 if __name__ == '__main__':
     print 'main'
 
+    # for sync to s3
     archive_directory = '/mnt/raid0/gsc/bigload/prices'
     archive_directory = '/Users/gsc/IdeaProjects/python-lab/eoddata/archive'
 
+    # files from mysql
     data_directory = '/mnt/raid0/gsc/archiver'
     data_directory = '/Users/gsc/IdeaProjects/python-lab/eoddata/raw_test_files'
 
+    # temporary files
     temp_directory = '/mnt/raid0/gsc/prices'
     temp_directory = '/tmp'
 
+    # id, symbol, market
     name_file = '/home/gsc/github/mythic-crux-aws/archiver/master_names.txt'
     name_file = '/Users/gsc/IdeaProjects/python-lab/eoddata/master_names.txt'
 
@@ -149,8 +160,11 @@ if __name__ == '__main__':
         sys.exit('short name dictionary read')
 
     lower_bound = 1
-    upper_bound = 4991462
-    upper_bound = 499
+    upper_bound = 1663820
+#    lower_bound = 1663820
+#    upper_bound = 3327640
+#    lower_bound = 3327640
+#    upper_bound = 4991462
     for ndx in range(lower_bound, upper_bound):
         print("current ndx:%d of %d (%d)" % (ndx, upper_bound, (upper_bound - ndx)))
         fix_file(name_dictionary[str(ndx)], data_directory, temp_directory)

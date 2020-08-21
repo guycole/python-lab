@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3441b185-88c6-4f7e-9d4b-65afda864ba7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview/embark.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview/highscore.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eoddata/archive/amex/amex-1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/eoddata/archive/amex/amex-1.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eoddata/price_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/eoddata/price_converter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eoddata/technical_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/eoddata/technical_converter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,15 +85,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -340,7 +339,8 @@
       <workItem from="1568134108323" duration="640000" />
       <workItem from="1568147510770" duration="13000" />
       <workItem from="1597956021347" duration="1044000" />
-      <workItem from="1597975976947" duration="6039000" />
+      <workItem from="1597975976947" duration="6537000" />
+      <workItem from="1598041219872" duration="4925000" />
     </task>
     <servers />
   </component>
