@@ -144,48 +144,6 @@ def zip_file(candidate, archive_directory, temp_directory):
             sys.exit("mv retry exceeded bad retstat %d" % retstat)
 
 
-def zip_file2(candidate):
-    outfile_base = '/mnt/raid0/gsc/technicals'
-    os.chdir(outfile_base)
-
-    market = candidate[2].lower()
-
-    txt_file_name = "%s/%s-%s.txt" % (market, market, candidate[0])
-    zip_file_name = "%s/%s-%s.zip" % (market, market, candidate[0])
-
-    if not os.path.isfile(txt_file_name):
-        sys.exit("ERROR: missing text file:%s" % txt_file_name)
-
-    command = "/usr/bin/zip -q %s %s" % (zip_file_name, txt_file_name)
-    retstat = system_call(command)
-    if retstat != 0:
-        sys.exit("zip retry exceeded bad retstat %d" % retstat)
-
-    fresh_file_stat = os.stat(zip_file_name)
-    fresh_file_size = fresh_file_stat.st_size
-
-    sync_base = '/mnt/raid0/gsc/bigload/technicals'
-    reference_file_name = "%s/%s" % (sync_base, zip_file_name)
-    if os.path.isfile(reference_file_name):
-        reference_file_stat = os.stat(reference_file_name)
-        reference_file_size = reference_file_stat.st_size
-    else:
-        print("missing reference file %s" % reference_file_name)
-        reference_file_size = 0
-
-    if fresh_file_size == reference_file_size:
-        os.unlink(zip_file_name)
-    else:
-        print("file size match failure")
-
-        if not os.path.isfile(zip_file_name):
-            print "ERROR: missing zip file:%s" % zip_file_name
-
-        command = "/bin/mv %s %s" % (zip_file_name, reference_file_name)
-#        retstat = system_call(command)
-#        if retstat != 0:
-#            sys.exit("mv retry exceeded bad retstat %d" % retstat)
-
 print 'start'
 
 if __name__ == '__main__':
